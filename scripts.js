@@ -45,6 +45,46 @@ async function fetchCourses(id = 1000) {
   const json = await res.json();
   courses = json.data;
   console.log(courses);
+  const courseSection = document.getElementById("courses");
+  const courseDiv = document.createElement("div");
+  courseDiv.classList.add(
+    "grid",
+    "grid-cols-1",
+    "md:grid-cols-2",
+    "lg:grid-cols-4",
+    "gap-5"
+  );
+  const courseDivs = courses.map((course) => {
+    const tempDiv = document.createElement("div");
+    tempDiv.classList.add("mx-auto");
+    // Create the HTML content
+    const verifiedIcon = course.authors[0].verified
+      ? '<i class="fa-solid fa-certificate text-blue-600"></i>'
+      : "";
+    tempDiv.innerHTML = `
+      <div class="mx-auto">
+        <div>
+          <img src=${course.thumbnail} class="w-80 h-52 rounded-md"/>
+        </div>
+        <div class="flex mt-3">
+          <div class="mr-5">
+            <img class="w-10 h-10 rounded-full" src=${course?.authors[0].profile_picture}/>
+          </div>
+          <div>
+            <h5 class="font-bold">${course.title}</h5>
+            <div class="flex items-center">
+              <p class="mr-1">${course.authors[0].profile_name}</p>
+              ${verifiedIcon}
+            </div>
+            <p>${course.others.views}</p>
+          </div>
+        </div>
+      </div>
+    `;
+    return tempDiv;
+  });
+  courseDivs.forEach((course) => courseDiv.appendChild(course));
+  courseSection.appendChild(courseDiv);
 }
 
 fetchCourses();
