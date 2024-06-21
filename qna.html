@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QNA</title>
+  </head>
+  <body>
+    <h3 class="text-3xl">Discuss the scope of `var`, `let`, and `const`</h3>
+    <p>
+      In JavaScript, var, let, and const are used to declare variables, but they
+      have different scopes and behaviors: var Function Scope: var is
+      function-scoped, meaning if it is declared inside a function, it is only
+      accessible within that function. Hoisting: Variables declared with var are
+      hoisted to the top of their scope. This means the variable declaration is
+      moved to the top, but the initialization is not. As a result, the variable
+      is accessible before its declaration, but its value is undefined until the
+      assignment is reached. Global Scope: When var is declared outside of a
+      function, it is attached to the global object (e.g., window in browsers).
+      Re-declaration: Variables declared with var can be re-declared within the
+      same scope without causing an error.
+    </p>
+    <h3 class="text-3xl">Tell us the use cases of `null` and `undefined`</h3>
+    <p>
+      Both null and undefined represent the absence of a value in programming,
+      but they have subtle differences in usage: Undefined: Indicates a variable
+      has been declared but not assigned a value. Returned by functions that
+      don't explicitly return a value. Occurs when trying to access a
+      non-existent property of an object. Null: An intentional assignment to a
+      variable to signify it has no value. Used to represent the absence of a
+      specific object reference.
+    </p>
+    <h3 class="text-3xl">What do you mean by REST API?</h3>
+    <p>
+      A REST API (or RESTful API) is a way for applications to communicate with
+      each other using a set of rules. It's like a waiter in a restaurant taking
+      your order and bringing you food. The waiter acts as an intermediary
+      between you and the kitchen. Here's a breakdown of the key concepts: REST
+      (Representational State Transfer): Defines a set of architectural
+      guidelines for how data is exchanged over the web. API (Application
+      Programming Interface): Acts as a middleman between different software
+      applications, allowing them to request and receive data. Here's how a REST
+      API works: An application makes a request to the REST API, specifying what
+      data it needs (like placing an order at a restaurant). The REST API uses
+      HTTP requests (like GET, POST, PUT, DELETE) to interact with the data
+      source (like the kitchen in the restaurant). The REST API sends back a
+      response containing the requested data or the result of the operation
+      (like bringing your food).
+    </p>
+  </body>
+</html>
