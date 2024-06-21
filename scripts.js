@@ -46,6 +46,9 @@ async function fetchCourses(id = 1000) {
   courses = json.data;
   console.log(courses);
   const courseSection = document.getElementById("courses");
+  // Clear the previous courses
+  courseSection.innerHTML = "";
+
   const courseDiv = document.createElement("div");
   courseDiv.classList.add(
     "grid",
@@ -54,6 +57,25 @@ async function fetchCourses(id = 1000) {
     "lg:grid-cols-4",
     "gap-5"
   );
+  if (!courses.length) {
+    courseDiv.classList.remove(
+      "grid",
+      "grid-cols-1",
+      "md:grid-cols-2",
+      "lg:grid-cols-4",
+      "gap-5"
+    );
+    courseDiv.innerHTML = `
+      <div class="flex justify-center items-center h-96 mx-auto">
+        <div>
+          <img class="mx-auto" src="images/Icon.png"/>
+          <h3 class="text-3xl text-center font-bold block">Oops!! Sorry, There is no <br/> content here</h3>
+        </div>
+      </div>
+    `;
+    courseSection.appendChild(courseDiv);
+    return;
+  }
   const courseDivs = courses.map((course) => {
     const tempDiv = document.createElement("div");
     tempDiv.classList.add("mx-auto");
