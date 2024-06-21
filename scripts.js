@@ -45,6 +45,21 @@ async function fetchCourses(id = 1000) {
   const json = await res.json();
   courses = json.data;
   console.log(courses);
+  document.getElementById("sort-by-views").addEventListener("click", () => {
+    courses.sort(
+      (a, b) =>
+        convertViewsToNumber(b.others.views) -
+        convertViewsToNumber(a.others.views)
+    );
+    console.log("clicked");
+    showItems(courses);
+  });
+  showItems(courses);
+}
+
+fetchCourses();
+
+function showItems(courses) {
   const courseSection = document.getElementById("courses");
   // Clear the previous courses
   courseSection.innerHTML = "";
@@ -109,4 +124,13 @@ async function fetchCourses(id = 1000) {
   courseSection.appendChild(courseDiv);
 }
 
-fetchCourses();
+// Helper function to convert view count strings to numbers
+function convertViewsToNumber(views) {
+  if (views.endsWith("k")) {
+    return parseFloat(views) * 1000;
+  }
+  if (views.endsWith("M")) {
+    return parseFloat(views) * 1000000;
+  }
+  return parseFloat(views); // Assuming views is a number if it doesn't end with 'k' or 'M'
+}
